@@ -170,6 +170,7 @@ async function run() {
           totalVisitorsPerYear: updatedSpot.totalVisitorsPerYear,
           user_email: updatedSpot.user_email,
           user_name: updatedSpot.user_name,
+          rating: updatedSpot.rating,
           createdAt: updatedSpot.createdAt,
           updatedAt: new Date(),
         },
