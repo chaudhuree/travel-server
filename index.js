@@ -58,6 +58,7 @@ async function run() {
           country_Name: updatedCountry.country_Name,
           description: updatedCountry.description,
           image: updatedCountry.image,
+          banner: updatedCountry.banner,
         },
       };
 
