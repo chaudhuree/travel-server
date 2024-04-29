@@ -125,7 +125,8 @@ async function run() {
       const skip = (page - 1) * limit;
       cursor = cursor.skip(skip).limit(limit);
       const result = await cursor.toArray();
-      res.send(result);
+      const total = await spotCollection.countDocuments();
+      res.send({ result, total });
     });
     // get all spot by user email
     app.get("/spots/user", async (req, res) => {
