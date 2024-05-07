@@ -120,6 +120,12 @@ async function run() {
       if (sort === "oldest") {
         cursor = cursor.sort({ updatedAt: 1 });
       }
+      if(sort === "highestPrice"){
+        cursor = cursor.sort({ average_cost: -1 });
+      }
+      if(sort === "lowestPrice"){
+        cursor = cursor.sort({ average_cost: 1 });
+      }
       const page = parseInt(req.query.page) || 1;
       const limit = parseInt(req.query.limit) || 6;
       const skip = (page - 1) * limit;
