@@ -134,6 +134,18 @@ async function run() {
       const total = await spotCollection.countDocuments();
       res.send({ result, total });
     });
+    // get all spots by search query in tourists_spot_name and country_Name
+    app.get("/spots/search", async (req, res) => {
+      const query = req.query.query;
+      const cursor = spotCollection.find({
+        $or: [
+          { tourists_spot_name: { $regex: query, $options: "i" } },
+          { country_Name: { $regex: query, $options: "i" } },
+        ],
+      });
+      const result = await cursor.toArray();
+      res.send(result);
+    });
     // get all spot by user email
     app.get("/spots/user", async (req, res) => {
       const user_email = req.query.user_email;
